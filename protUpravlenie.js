@@ -43,30 +43,3 @@ function protect() {
     indexStart = indexStartnoBlank + indexEndBlock + 1;
   }
 }
-
-// пропускаем пустоты
-function noBlank(values, row) {
-  const index = values.map(x => x[0]).findIndex(val => val != '');
-  return row + index;
-}
-
-function protects(sheet, row, col, rows, cols) {
-  const protection = sheet.getRange(row, col, rows, cols).protect().setDescription('Проект закритий. Для внесення правок зверныться до Віталія');
-  const me = Session.getEffectiveUser();
-  protection.addEditor(me);
-  protection.removeEditors(protection.getEditors());
-  if (protection.canDomainEdit()) {
-    protection.setDomainEdit(false);
-  }
-  //protection.addEditor('ukengo2022@neural-myth-360416.iam.gserviceaccount.com');
-}
-
-function unProtect(ss) {
-  const protections = ss.getProtections(SpreadsheetApp.ProtectionType.RANGE);
-  for (let i = 0; i < protections.length; i++) {
-    const protection = protections[i];
-    if (protection.canEdit()) {
-      protection.remove();
-    }
-  }
-}
