@@ -1,7 +1,7 @@
 function protectIrinaCounts() {
   // отримуємо таблицю
   const url = 'https://docs.google.com/spreadsheets/d/1bd-YnMzDO8An3pGAniQXbFAPC1IWq5SSBlHK0pW2hVI/edit#gid=1139650230';
-  const sheetName = 'СЧЕТА';
+  const sheetName = 'РАХУНКИ';
   const ss = SpreadsheetApp.openByUrl(url);
   const sheet = ss.getSheetByName(sheetName);
 
